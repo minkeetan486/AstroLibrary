@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AndroidLibrary</string>
+    <string name="borrow_book">Borrow Book</string>
+    <string name="return_book">Return Book</string>
+</resources>

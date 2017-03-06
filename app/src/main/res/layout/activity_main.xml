@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFF8D"
+    android:orientation="vertical"
+    tools:context="com.example.wbf486.androidlibrary.MainActivity">
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@drawable/library">
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_height="match_parent"
+            android:layout_width="0px"
+            android:text="@string/borrow_book"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:layout_margin="5sp"
+            android:gravity="center"
+            android:background="#C0CA33"
+            android:onClick="borrowBook" />
+
+        <Button
+            android:layout_height="match_parent"
+            android:layout_width="0px"
+            android:text="@string/return_book"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:layout_margin="5sp"
+            android:gravity="center"
+            android:background="#C0CA33"
+            android:onClick="returnBook" />
+    </LinearLayout>
+
+</LinearLayout>

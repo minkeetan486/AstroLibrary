@@ -8,11 +8,19 @@
     android:orientation="vertical"
     tools:context="com.example.wbf486.androidlibrary.MainActivity">
 
-    <LinearLayout android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/eTWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.80"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:background="@drawable/library">
+        android:orientation="horizontal">
 
     </LinearLayout>
 

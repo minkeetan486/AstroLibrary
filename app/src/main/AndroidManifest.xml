@@ -20,6 +20,10 @@
             android:label="Android Library"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
+            android:name=".LibraryList"
+            android:label="Android Library"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".LoginActivity"
             android:label="Android Library">
             <intent-filter>
@@ -28,7 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LibraryList"></activity>
     </application>
 
 </manifest>

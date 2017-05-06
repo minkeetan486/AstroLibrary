@@ -116,6 +116,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_account) {
 
         } else if (id == R.id.nav_Library_Book) {
+            Intent intent = new Intent(MainActivity.this, LibraryList.class);
+
+            MainActivity.this.startActivity(intent);
 
         }else if (id == R.id.nav_help) {
 

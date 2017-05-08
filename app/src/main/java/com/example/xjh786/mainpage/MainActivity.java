@@ -24,6 +24,8 @@ import static com.example.xjh786.mainpage.R.id.nav_libCorner;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    String coreId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         invalidateOptionsMenu();
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         String str_fullName = intent.getStringExtra("fullName");
+        coreId = intent.getStringExtra("coreId");
         boolean b_isAdmin = intent.getBooleanExtra("isAdmin", false);
 
         String message = "Welcome to Astro Library \n" + str_fullName ;
@@ -116,6 +119,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_account) {
 
         } else if (id == R.id.nav_Library_Book) {
+
+            Intent intent = new Intent(MainActivity.this, BooksActivity.class);
+            intent.putExtra("coreId", coreId);
+            MainActivity.this.startActivity(intent);
 
         }else if (id == R.id.nav_help) {
 

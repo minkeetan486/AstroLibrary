@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("fullName", str_fullName);
                         intent.putExtra("isAdmin", b_isAdmin);
+                        intent.putExtra("coreId", str_CoreId);
 
                         LoginActivity.this.startActivity(intent);
 

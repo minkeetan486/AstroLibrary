@@ -46,8 +46,6 @@ public class BooksActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
 
-                    // boolean b_success = jsonResponse.getBoolean("success");
-
                     Log.d(TAG, "onClickLogin: receive response");
                     Log.d(TAG, response);
 
@@ -72,8 +70,8 @@ public class BooksActivity extends AppCompatActivity {
     private void loadBooks()
     {
         Log.d(TAG, "loadBooks(): sending request");
-        BooksRequest loginRequest = new BooksRequest(str_CoreId, responseListener);
+        BooksRequest booksRequest = new BooksRequest(str_CoreId, responseListener);
         RequestQueue queue = Volley.newRequestQueue(BooksActivity.this);
-        queue.add(loginRequest);
+        queue.add(booksRequest);
     }
 }

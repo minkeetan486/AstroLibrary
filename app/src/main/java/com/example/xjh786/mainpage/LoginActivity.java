@@ -29,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onClickLogin(View view){
+        Intent intent = new Intent(LoginActivity.this, loadingActivity.class);
+        LoginActivity.this.startActivity(intent);
         etCoreId = (EditText) findViewById(R.id.eTCoreId);
         etPassword = (EditText)findViewById(R.id.eTPassword);
 
@@ -48,12 +50,13 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d(TAG, "onClickLogin: success");
                         String str_fullName = jsonResponse.getJSONObject("result").getString("fullName");
                         boolean b_isAdmin = jsonResponse.getJSONObject("result").getBoolean("isAdmin");
-
+                        loadingActivity.fa.finish();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("fullName", str_fullName);
                         intent.putExtra("isAdmin", b_isAdmin);
 
                         LoginActivity.this.startActivity(intent);
+                        finish();
 
                     }else{
                         Log.d(TAG, "onClickLogin: fail");

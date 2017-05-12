@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -43,12 +45,28 @@ public class LibraryList extends AppCompatActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Loading...");
         pDialog.show();
-        GetBooks("vbp687");
+        GetBooks("vbp687");// hardcoded as well, need to get from the login intent
+
+        //need to make this better if possible
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                Object book_det = listView.getItemAtPosition(position);
+                Book book_at=(Book)book_det;//
+                Toast.makeText(getBaseContext(),book_at.getTitle(),Toast.LENGTH_SHORT).show(); // will work on intent from here
+            }
+        });
     }
 
     public void onClickSearchBooks(View view)
     {
 
+    }
+
+    public void onClickBook(AdapterView<?> parent, View v, int position)
+    {
+        Log.d(TAG, "Postion:" + position);
     }
     public void GetBooks(String etCoreId)
     {

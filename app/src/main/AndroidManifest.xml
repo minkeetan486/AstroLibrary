@@ -22,6 +22,12 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
+
+    <activity android:name=".MyAccountActivity"
+        android:label="My Account"
+        android:theme="@style/AppTheme.NoActionBar">
+xjh786
+    </activity>
         <activity
             android:name=".LoginActivity"
             android:label="Android Library"

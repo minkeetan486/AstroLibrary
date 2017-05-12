@@ -114,7 +114,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_about) {
             // Handle the camera action
         } else if (id == R.id.nav_account) {
-
+            Intent intent = new Intent(MainActivity.this, MyAccountActivity.class);
+            MainActivity.this.startActivity(intent);
         } else if (id == R.id.nav_Library_Book) {
 
         }else if (id == R.id.nav_help) {

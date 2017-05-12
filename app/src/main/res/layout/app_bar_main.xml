@@ -37,7 +37,44 @@
             android:layout_height="wrap_content"
             android:includeFontPadding="true"
             android:textAlignment="center"
-             />
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ANNOUNCEMENT"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area "
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            </LinearLayout>
+        </ScrollView>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

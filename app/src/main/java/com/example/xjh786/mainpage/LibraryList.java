@@ -1,5 +1,6 @@
 package com.example.xjh786.mainpage;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -7,34 +8,55 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.example.xjh786.mainpage.model.Book;
+import com.example.xjh786.mainpage.adapter.CustomListAdapter;
+import com.example.xjh786.mainpage.app.AppController;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class LibraryList extends AppCompatActivity {
     private static final String TAG = "LibraryApp";
-    private EditText etCoreId;
+    private String etCoreId;
+    private List<Book> bookList = new ArrayList<Book>();
+    private ListView listView;
+    private CustomListAdapter adapter;
+    private ProgressDialog pDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library_list);
-
+        listView = (ListView) findViewById(R.id.list);
+        adapter = new CustomListAdapter(this, bookList);
+        listView.setAdapter(adapter);
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Loading...");
+        pDialog.show();
+        GetBooks("vbp687");
     }
 
     public void onClickSearchBooks(View view)
     {
-        etCoreId = (EditText)findViewById(R.id.coreID);
 
-        final String str_CoreId = etCoreId.getText().toString();
+    }
+    public void GetBooks(String etCoreId)
+    {
+        final String str_CoreId = etCoreId;
         Response.Listener<String> responseListener = new Response.Listener<String>(){
             @Override
             public void onResponse(String response){
+                hidePDialog();
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean b_success = jsonResponse.getBoolean("success");
@@ -43,8 +65,28 @@ public class LibraryList extends AppCompatActivity {
 
                     if(b_success){
                         Log.d(TAG, response);
+                        JSONArray books_array = jsonResponse.getJSONArray("result");
 
-                    }else{
+                        for (int i = 0; i < books_array.length(); i++)
+                        {
+                            try {
+                                JSONObject obj = books_array.getJSONObject(i);
+                                Book book = new Book();
+                                book.setTitle(obj.getString("Title"));
+                                book.setAuthor(obj.getString("Author"));
+                                book.setThumbnailUrl("https://img.clipartfest.com/25920a48a380e6c47e5c56da10ee44a9_no-image-available-clip-art-no-image-available-clipart_300-300.png");//hardcode for the time being
+                                book.setYear((int) obj.get("Year_of_Publish"));
+                                book.setqty((int) obj.get("Num_of_Available"));
+                                bookList.add(book);
+                            }
+                            catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            }
+                        adapter.notifyDataSetChanged(); // update the listview
+                    }
+                    else
+                    {
                         Log.d(TAG, response);
                         Log.d(TAG, "onClickSearchBooks: No results");
                         AlertDialog.Builder builder = new AlertDialog.Builder(LibraryList.this);
@@ -60,10 +102,23 @@ public class LibraryList extends AppCompatActivity {
             }
         };
 
+
         Log.d(TAG, "onClickSearchBooks: sending request");
 
         LibraryListRequest libraryListReq = new LibraryListRequest(str_CoreId, responseListener);//remove core id and get from intent
         RequestQueue queue = Volley.newRequestQueue(LibraryList.this);
         queue.add(libraryListReq);
+
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        hidePDialog();
+    }
+
+    private void hidePDialog() {
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
+        }}
 }

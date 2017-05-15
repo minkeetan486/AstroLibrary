@@ -45,7 +45,7 @@ public class LibraryList extends AppCompatActivity  {
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Loading...");
         pDialog.show();
-        GetBooks("vbp687");// hardcoded as well, need to get from the login intent
+        GetBooks("kvm768");// hardcoded as well, need to get from the login intent
 
         //need to make this better if possible
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

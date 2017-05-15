@@ -27,14 +27,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class LibraryList extends AppCompatActivity {
+public class LibraryList extends AppCompatActivity  {
     private static final String TAG = "LibraryApp";
     private String etCoreId;
     private List<Book> bookList = new ArrayList<Book>();
     private ListView listView;
     private CustomListAdapter adapter;
     private ProgressDialog pDialog;
-
+    public final static String PAR_KEY = "package com.example.xjh786.mainpage.model.PAR";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,10 +51,16 @@ public class LibraryList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
+                Book book_at = new Book();
                 Object book_det = listView.getItemAtPosition(position);
-                Book book_at=(Book)book_det;//
-                Toast.makeText(getBaseContext(),book_at.getTitle(),Toast.LENGTH_SHORT).show(); // will work on intent from here
+                book_at=(Book)book_det;
+                Intent intent = new Intent(LibraryList.this, BookDetails.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putParcelable(PAR_KEY, book_at);
+                intent.putExtras(mBundle);
+                LibraryList.this.startActivity(intent);
+
+                //Toast.makeText(getBaseContext(),book_at.getTitle(),Toast.LENGTH_SHORT).show(); // will work on intent from here
             }
         });
     }
@@ -82,7 +88,7 @@ public class LibraryList extends AppCompatActivity {
                     Log.d(TAG, "onClickSearchBooks: receive response");
 
                     if(b_success){
-                        Log.d(TAG, response);
+                        //Log.d(TAG, response);
                         JSONArray books_array = jsonResponse.getJSONArray("result");
 
                         for (int i = 0; i < books_array.length(); i++)
@@ -91,6 +97,7 @@ public class LibraryList extends AppCompatActivity {
                                 JSONObject obj = books_array.getJSONObject(i);
                                 Book book = new Book();
                                 book.setTitle(obj.getString("Title"));
+                                book.setBook_id(obj.getString("BookInfo_ID"));
                                 book.setAuthor(obj.getString("Author"));
                                 book.setThumbnailUrl("https://img.clipartfest.com/25920a48a380e6c47e5c56da10ee44a9_no-image-available-clip-art-no-image-available-clipart_300-300.png");//hardcode for the time being
                                 book.setYear((int) obj.get("Year_of_Publish"));

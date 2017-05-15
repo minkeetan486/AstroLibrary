@@ -9,4 +9,5 @@
     <dimen name="author">15dip</dimen>
     <dimen name="year_of_publish">13dip</dimen>
     <dimen name="qty">12dip</dimen>
+    <dimen name="book_id">12dip</dimen>
 </resources>

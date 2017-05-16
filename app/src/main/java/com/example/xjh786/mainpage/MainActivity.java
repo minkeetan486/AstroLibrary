@@ -18,12 +18,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import static com.example.xjh786.mainpage.R.id.expanded_menu;
+import static com.example.xjh786.mainpage.R.id.nav_libCorner;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        invalidateOptionsMenu();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
@@ -48,6 +51,9 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        Menu menuu = navigationView.getMenu();
+        menuu.findItem(R.id.nav_libCorner).setVisible(b_isAdmin); //set the visibility of the Librarian Corner Menu
+
     }
 
     @Override
@@ -67,10 +73,10 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
-
-
         return true;
     }
+
+
 
     @Override
     public boolean onPrepareOptionsMenu(Menu activity_main_drawer)
@@ -103,7 +109,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
 
-
         int id = item.getItemId();
 
         if (id == R.id.nav_about)
@@ -125,11 +130,24 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_libCorner)
         {
+        if (id == R.id.nav_about) {
+            // Handle the camera action
+        } else if (id == R.id.nav_account) {
+            Intent intent = new Intent(MainActivity.this, MyAccountActivity.class);
+            MainActivity.this.startActivity(intent);
+        } else if (id == R.id.nav_Library_Book) {
+
+        }else if (id == R.id.nav_help) {
+            Intent intent = new Intent(MainActivity.this, loadingActivity.class);
+            MainActivity.this.startActivity(intent);
+
+        }else if (id == nav_libCorner) {
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 }

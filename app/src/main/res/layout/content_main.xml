@@ -1,12 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.xjh786.mainpage.MainActivity"
+    android:orientation="vertical"
     tools:showIn="@layout/app_bar_main">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="true"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ANNOUNCEMENT"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area This is the announcement area "
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat" />
+        </LinearLayout>
+    </ScrollView>
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

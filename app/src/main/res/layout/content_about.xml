@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor"
+    tools:context="com.example.xjh786.mainpage.MainActivity">
+
+    <TextView
+        android:id="@+id/tv_quote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView_about"
+        android:layout_centerHorizontal="true"
+        android:text="@string/quote"
+        android:textColor="#FFFFFF"
+        android:textStyle="italic"
+        />
+
+    <ImageView
+        android:id="@+id/imageView_about"
+        android:contentDescription="brain with books"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_above="@+id/tv_version"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/book_brain"
+        android:scaleType="fitCenter"
+        />
+
+    <TextView
+        android:id="@+id/tv_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/version"
+        android:textStyle="italic"
+        android:textColor="#80FFFF"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_above="@+id/tv_license"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_license"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/license"
+        android:textColor="#FFFFFF"
+        android:layout_above="@+id/button_credit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="51dp"
+        />
+
+    <Button
+        android:id="@+id/button_credit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_credits"
+        android:onClick="callCredits"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        />
+
+</RelativeLayout>

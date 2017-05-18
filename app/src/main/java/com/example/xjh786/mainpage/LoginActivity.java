@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     }else{
                         Log.d(TAG, "onClickLogin: fail");
+                        loadingActivity.fa.finish();
                         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                         builder.setMessage("Login Failed")
                                 .setNegativeButton("Retry", null)

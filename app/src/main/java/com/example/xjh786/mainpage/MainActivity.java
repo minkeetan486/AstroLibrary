@@ -1,10 +1,7 @@
 package com.example.xjh786.mainpage;
 
-import android.app.Notification;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,12 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Intent;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import static com.example.xjh786.mainpage.R.id.expanded_menu;
 import static com.example.xjh786.mainpage.R.id.nav_libCorner;
 
 public class MainActivity extends AppCompatActivity
@@ -33,7 +26,7 @@ public class MainActivity extends AppCompatActivity
         String str_fullName = intent.getStringExtra("fullName");
         boolean b_isAdmin = intent.getBooleanExtra("isAdmin", false);
 
-        String message = "Welcome to Astro Library \n" + str_fullName ;
+        String message = "Welcome to Astro Library \n" + str_fullName;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -77,10 +70,8 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     @Override
-    public boolean onPrepareOptionsMenu(Menu activity_main_drawer)
-    {
+    public boolean onPrepareOptionsMenu(Menu activity_main_drawer) {
         //boolean isAdmin = false;
         //MenuItem register = activity_main_drawer.findItem(R.id.nav_libCorner);
         //register.setVisible(isAdmin);
@@ -112,18 +103,18 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_about) {
-            Intent intent = new Intent (this, AboutActivity.class);
+            Intent intent = new Intent(this, AboutActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_account) {
             Intent intent = new Intent(MainActivity.this, MyAccountActivity.class);
             MainActivity.this.startActivity(intent);
         } else if (id == R.id.nav_Library_Book) {
 
-        }else if (id == R.id.nav_help) {
+        } else if (id == R.id.nav_help) {
             Intent intent = new Intent(MainActivity.this, loadingActivity.class);
             MainActivity.this.startActivity(intent);
 
-        }else if (id == nav_libCorner) {
+        } else if (id == nav_libCorner) {
 
         }
 

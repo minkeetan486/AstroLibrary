@@ -14,38 +14,21 @@
         <activity
             android:name=".MainActivity"
             android:label="Android Library"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".RegisterActivity"
             android:label="Android Library"
             android:theme="@style/AppTheme.NoActionBar" />
 
-
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".loadingActivity"
             android:label="Android Library"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <activity android:name=".RegisterActivity"
-            android:label="Android Library"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity android:name=".loadingActivity"
-            android:label="Android Library"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity android:name=".MainAnnouncementActivity"
-            android:label="Android Library"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity android:name=".MyAccountActivity"
-        android:label="My Account"
-        android:theme="@style/AppTheme.NoActionBar">
-    </activity>
+        <activity
+            android:name=".MyAccountActivity"
+            android:label="My Account"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity
             android:name=".LoginActivity"
@@ -61,12 +44,11 @@
         <activity
             android:name=".AboutActivity"
             android:label="About"
-            android:theme="@style/AppTheme.AboutAndCredit">
-        </activity>
-        <activity android:name=".Credits"
+            android:theme="@style/AppTheme.AboutAndCredit"></activity>
+        <activity
+            android:name=".Credits"
             android:label="Credits"
-            android:theme="@style/AppTheme.AboutAndCredit">
-        </activity>
+            android:theme="@style/AppTheme.AboutAndCredit"></activity>
     </application>
 
 </manifest>

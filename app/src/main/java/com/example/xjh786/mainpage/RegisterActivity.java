@@ -1,6 +1,7 @@
 package com.example.xjh786.mainpage;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText etEmail;
     private EditText etDepartment_Code;
     private static final String TAG = "LibraryApp";
+    ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
         Response.Listener<String> responseListener = new Response.Listener<String>(){
             @Override
             public void onResponse(String response){
+                pDialog.dismiss();
                 Log.d(TAG, "onRegisterSubmit: response received");
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
@@ -81,5 +84,9 @@ public class RegisterActivity extends AppCompatActivity {
         RegisterRequest registerRequest = new RegisterRequest(str_Name, str_CoreId, str_Password, str_Email, str_DepartmentCode, responseListener);
         RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
         queue.add(registerRequest);
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Register...");
+        pDialog.setCancelable(false);
+        pDialog.show();
     }
 }

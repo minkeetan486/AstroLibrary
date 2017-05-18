@@ -111,27 +111,9 @@ public class MainActivity extends AppCompatActivity
 
         int id = item.getItemId();
 
-        if (id == R.id.nav_about)
-        {
+        if (id == R.id.nav_about) {
             Intent intent = new Intent (this, AboutActivity.class);
             startActivity(intent);
-        }
-        else if (id == R.id.nav_account)
-        {
-
-        }
-        else if (id == R.id.nav_Library_Book)
-        {
-
-        }
-        else if (id == R.id.nav_help)
-        {
-
-        }
-        else if (id == R.id.nav_libCorner)
-        {
-        if (id == R.id.nav_about) {
-            // Handle the camera action
         } else if (id == R.id.nav_account) {
             Intent intent = new Intent(MainActivity.this, MyAccountActivity.class);
             MainActivity.this.startActivity(intent);

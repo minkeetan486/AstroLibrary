@@ -1,5 +1,6 @@
 package com.example.xjh786.mainpage;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -21,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etCoreId;
     private EditText etPassword;
     private static final String TAG = "LibraryApp";
+    ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onClickLogin(View view){
-        Intent intent = new Intent(LoginActivity.this, loadingActivity.class);
-        LoginActivity.this.startActivity(intent);
+       /* Intent intent = new Intent(LoginActivity.this, loadingActivity.class);
+        LoginActivity.this.startActivity(intent);*/
         etCoreId = (EditText) findViewById(R.id.eTCoreId);
         etPassword = (EditText)findViewById(R.id.eTPassword);
 
@@ -40,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         Response.Listener<String> responseListener = new Response.Listener<String>(){
             @Override
             public void onResponse(String response){
+                pDialog.dismiss();
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean b_success = jsonResponse.getBoolean("success");
@@ -50,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d(TAG, "onClickLogin: success");
                         String str_fullName = jsonResponse.getJSONObject("result").getString("fullName");
                         boolean b_isAdmin = jsonResponse.getJSONObject("result").getBoolean("isAdmin");
-                        loadingActivity.fa.finish();
+
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("fullName", str_fullName);
                         intent.putExtra("isAdmin", b_isAdmin);
@@ -78,6 +81,10 @@ public class LoginActivity extends AppCompatActivity {
         LoginRequest loginRequest = new LoginRequest(str_CoreId, str_Password, responseListener);
         RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
         queue.add(loginRequest);
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Login...");
+        pDialog.setCancelable(false);
+        pDialog.show();
     }
     public void onClickReg(View view){
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);

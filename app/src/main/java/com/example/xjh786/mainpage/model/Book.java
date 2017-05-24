@@ -10,8 +10,8 @@ public class Book {
     private String title, thumbnailUrl,author;
     private int qty,year_of_publish;
 
-    public Book() {
-    }
+    //public Book() {
+    //}
 
     public Book(String title, String thumbnailUrl, int qty, int year_of_publish,
                 String author) {

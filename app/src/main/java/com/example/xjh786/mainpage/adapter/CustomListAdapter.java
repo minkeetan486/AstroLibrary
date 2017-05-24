@@ -6,30 +6,42 @@ package com.example.xjh786.mainpage.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.xjh786.mainpage.LibraryList;
 import com.example.xjh786.mainpage.R;
 import com.example.xjh786.mainpage.app.AppController;
 import com.example.xjh786.mainpage.model.Book;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale; //jtwj
+import android.widget.ImageView;
 
-public class CustomListAdapter extends BaseAdapter {
+public class CustomListAdapter extends BaseAdapter{
+    private static final String TAG = "LibraryApp";
     private Activity activity;
     private LayoutInflater inflater;
     private List<Book> books;
+    private ArrayList<Book> bookList;
     ImageLoader imageLoader = AppController.getInstance().getImageLoader();
+    private LibraryList librarylist;
 
     public CustomListAdapter(Activity activity, List<Book> books) {
         this.activity = activity;
         this.books = books;
+        this.bookList = new ArrayList<Book>();
+        this.bookList.addAll(books);
     }
+
 
     @Override
     public int getCount() {
@@ -49,6 +61,7 @@ public class CustomListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        Log.d(TAG, "show view");
         if (inflater == null)
             inflater = (LayoutInflater) activity
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);

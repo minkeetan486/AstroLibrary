@@ -21,6 +21,7 @@ public class AboutActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(this, Credits.class);
         startActivity(intent);
+        finish();
     }
 
 }

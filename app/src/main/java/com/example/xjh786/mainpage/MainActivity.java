@@ -16,15 +16,16 @@ import static com.example.xjh786.mainpage.R.id.nav_libCorner;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    static String str_fullName;
+    static boolean b_isAdmin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         invalidateOptionsMenu();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
-        String str_fullName = intent.getStringExtra("fullName");
-        boolean b_isAdmin = intent.getBooleanExtra("isAdmin", false);
+        str_fullName = intent.getStringExtra("fullName");
+        b_isAdmin = intent.getBooleanExtra("isAdmin", false);
 
         String message = "Welcome to Astro Library \n" + str_fullName;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

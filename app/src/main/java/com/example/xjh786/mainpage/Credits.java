@@ -36,13 +36,13 @@ public class Credits extends AppCompatActivity {
     }
 
     // back to main activity when back button is pressed
-    @Override
-    public void onBackPressed()
-    {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
+ //   @Override
+   // public void onBackPressed()
+   // {
+    //    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+    //    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    //    startActivity(intent);
+  //  }
 
     // update names to array list
     private void updateNewsList ()

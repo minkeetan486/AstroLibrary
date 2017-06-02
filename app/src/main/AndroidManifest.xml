@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".app.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Astro Library"
@@ -27,8 +28,7 @@
 
         <activity
             android:name=".MyAccountActivity"
-            android:label="My Account"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="My Account"></activity>
 
         <activity
             android:name=".LoginActivity"
@@ -49,6 +49,13 @@
             android:name=".Credits"
             android:label="Credits"
             android:theme="@style/AppTheme.AboutAndCredit"></activity>
+        <activity
+            android:name=".LibraryList"
+            android:label="Library List"/>
+
+        <activity
+            android:name=".BookDetails"
+            android:label="Book Details" />
     </application>
 
 </manifest>

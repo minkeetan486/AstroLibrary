@@ -110,7 +110,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, MyAccountActivity.class);
             MainActivity.this.startActivity(intent);
         } else if (id == R.id.nav_Library_Book) {
-
+            Intent intent = new Intent(MainActivity.this, LibraryList.class);
+            MainActivity.this.startActivity(intent);
         } else if (id == R.id.nav_help) {
             Intent intent = new Intent(MainActivity.this, loadingActivity.class);
             MainActivity.this.startActivity(intent);

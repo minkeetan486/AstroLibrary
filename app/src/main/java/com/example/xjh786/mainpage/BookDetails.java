@@ -76,7 +76,7 @@ public class BookDetails extends AppCompatActivity {
                     if(b_success){
                         AlertDialog.Builder builder = new AlertDialog.Builder(BookDetails.this);
                         builder.setMessage("Borrow Successful!.")
-                                .setNegativeButton("Retry", null)
+                                .setNegativeButton("Ok", null)
                                 .create()
                                 .show();
                     }
@@ -100,7 +100,7 @@ public class BookDetails extends AppCompatActivity {
 
         Log.d(TAG, "onBorrowBooks: sending request");
 
-        BorrowRequest borrowBook = new BorrowRequest(str_CoreId, responseListener, Book_ID);//remove core id and get from intent
+        BorrowRequest borrowBook = new BorrowRequest(str_CoreId,Book_ID,responseListener);//remove core id and get from intent
         RequestQueue queue = Volley.newRequestQueue(BookDetails.this);
         queue.add(borrowBook);
 

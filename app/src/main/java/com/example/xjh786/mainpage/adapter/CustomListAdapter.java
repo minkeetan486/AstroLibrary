@@ -82,6 +82,7 @@ public class CustomListAdapter extends BaseAdapter {
 
         // qty
         qty.setText("Available: " + String.valueOf(m.getqty()));
+        //qty.setTextColor("#ff0000");
 
         book_id.setText("ID:" + String.valueOf(m.getBook_id()));
 

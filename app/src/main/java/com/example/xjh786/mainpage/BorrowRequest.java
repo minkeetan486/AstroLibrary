@@ -17,13 +17,13 @@ public class BorrowRequest extends StringRequest {
     private Map<String, String> param;
     private static final String TAG = "LibraryApp_Borrow";
 
-    public BorrowRequest(String coreid, Response.Listener<String> listener,String BookInfo_ID){
+    public BorrowRequest(String coreid, String BookInfo_ID, Response.Listener<String> listener){
         super(Method.POST, book_req_url, listener, null);
         param = new HashMap<>();
         param.put("version", "1");
         param.put("coreid", coreid);
         param.put("action","borrow");//temp for now
-        param.put("BookInfo_ID",BookInfo_ID);
+        param.put("bookid",BookInfo_ID);
         Log.d(TAG, "BookQuery: Borrow Request Sent!");
     }
 

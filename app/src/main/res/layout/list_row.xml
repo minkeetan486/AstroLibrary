@@ -22,7 +22,8 @@
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
         android:textSize="@dimen/title"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"/>
 
     <!-- book ID -->
     <TextView
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:textSize="@dimen/book_id"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
     <!-- author -->
     <TextView
@@ -41,7 +42,8 @@
         android:layout_below="@id/title"
         android:layout_marginTop="1dip"
         android:layout_toRightOf="@+id/thumbnail"
-        android:textSize="@dimen/author" />
+        android:textSize="@dimen/author"
+        android:layout_marginLeft="15dp"/>
 
     <!-- year_of_publish -->
     <TextView
@@ -52,7 +54,8 @@
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/thumbnail"
         android:textColor="@color/year_of_publish"
-        android:textSize="@dimen/year_of_publish" />
+        android:textSize="@dimen/year_of_publish"
+        android:layout_marginLeft="15dp"/>
 
     <!-- qty -->
     <TextView

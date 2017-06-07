@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,6 +31,10 @@ public class MyAccountActivity extends AppCompatActivity {
         invalidateOptionsMenu();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_account);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         Intent intent = getIntent();
 
         //START--- Work In Progress: Hardcode for now...
@@ -79,5 +84,15 @@ public class MyAccountActivity extends AppCompatActivity {
         MyAccountRequest myAccountRequest = new MyAccountRequest(str_CoreId, str_Password, responseListener);
         RequestQueue queue = Volley.newRequestQueue(MyAccountActivity.this);
         queue.add(myAccountRequest);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

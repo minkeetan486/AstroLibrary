@@ -4,7 +4,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -27,9 +26,6 @@ public class BookDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         setContentView(R.layout.activity_book_details);
         mBook = (Book)getIntent().getParcelableExtra(LibraryList.PAR_KEY);
         if (imageLoader == null)
@@ -61,18 +57,8 @@ public class BookDetails extends AppCompatActivity {
         book_id.setText("ID:" + String.valueOf(mBook.getBook_id()));
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // handle arrow click here
-        if (item.getItemId() == android.R.id.home) {
-            finish(); // close this activity and return to preview activity (if there is any)
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     public void onClickBorrowBook(View view){
-       BorrowBooks("kvm768", mBook.getBook_id());
+        BorrowBooks("kvm768", mBook.getBook_id());
     }
 
     public void BorrowBooks(String etCoreId, String Book_ID)
@@ -90,7 +76,7 @@ public class BookDetails extends AppCompatActivity {
                     if(b_success){
                         AlertDialog.Builder builder = new AlertDialog.Builder(BookDetails.this);
                         builder.setMessage("Borrow Successful!.")
-                                .setNegativeButton("Retry", null)
+                                .setNegativeButton("Ok", null)
                                 .create()
                                 .show();
                     }
@@ -114,7 +100,7 @@ public class BookDetails extends AppCompatActivity {
 
         Log.d(TAG, "onBorrowBooks: sending request");
 
-        BorrowRequest borrowBook = new BorrowRequest(str_CoreId, responseListener, Book_ID);//remove core id and get from intent
+        BorrowRequest borrowBook = new BorrowRequest(str_CoreId,Book_ID,responseListener);//remove core id and get from intent
         RequestQueue queue = Volley.newRequestQueue(BookDetails.this);
         queue.add(borrowBook);
 

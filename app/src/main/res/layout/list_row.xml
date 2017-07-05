@@ -26,13 +26,13 @@
         android:layout_marginLeft="15dp"/>
 
     <!-- book ID -->
-    <TextView
+   <!-- <TextView
         android:id="@+id/book_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:textSize="@dimen/book_id"
-        android:textStyle="bold"/>
+        android:textStyle="bold"/>-->
 
     <!-- author -->
     <TextView

@@ -1,9 +1,12 @@
 package com.example.xjh786.mainpage;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,11 +25,18 @@ import org.json.JSONObject;
 public class BookDetails extends AppCompatActivity {
     ImageLoader imageLoader = AppController.getInstance().getImageLoader();
     Book mBook;
+    TextView qty;
     private static final String TAG = "LibraryApp.BookDetails";
+    boolean borrowSuccess = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_details);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         mBook = (Book)getIntent().getParcelableExtra(LibraryList.PAR_KEY);
         if (imageLoader == null)
         {imageLoader = AppController.getInstance().getImageLoader();}
@@ -35,8 +45,8 @@ public class BookDetails extends AppCompatActivity {
         TextView title = (TextView) findViewById(R.id.title);
         TextView author = (TextView) findViewById(R.id.author);
         TextView year_of_publish = (TextView) findViewById(R.id.year_of_publish);
-        TextView qty = (TextView) findViewById(R.id.qty);
-        TextView book_id = (TextView) findViewById(R.id.book_id);
+        qty = (TextView) findViewById(R.id.qty);
+      //  TextView book_id = (TextView) findViewById(R.id.book_id);
 
         // thumbnail image
         Log.d(TAG,"URL is:"+ mBook.getThumbnailUrl());
@@ -54,7 +64,7 @@ public class BookDetails extends AppCompatActivity {
         // qty
         qty.setText("Available: " + String.valueOf(mBook.getqty()));
 
-        book_id.setText("ID:" + String.valueOf(mBook.getBook_id()));
+       // book_id.setText("ID:" + String.valueOf(mBook.getBook_id()));
     }
 
     public void onClickBorrowBook(View view){
@@ -79,6 +89,8 @@ public class BookDetails extends AppCompatActivity {
                                 .setNegativeButton("Ok", null)
                                 .create()
                                 .show();
+                        qty.setText("Available: " + String.valueOf(mBook.getqty()-1));
+                        borrowSuccess = true;
                     }
                     else
                     {
@@ -103,6 +115,29 @@ public class BookDetails extends AppCompatActivity {
         BorrowRequest borrowBook = new BorrowRequest(str_CoreId,Book_ID,responseListener);//remove core id and get from intent
         RequestQueue queue = Volley.newRequestQueue(BookDetails.this);
         queue.add(borrowBook);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("borrowSuccess",borrowSuccess);
+            setResult(Activity.RESULT_OK,returnIntent);
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("borrowSuccess",borrowSuccess);
+        setResult(Activity.RESULT_OK,returnIntent);
+        finish();
 
     }
 

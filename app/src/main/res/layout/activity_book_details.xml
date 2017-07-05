@@ -16,13 +16,13 @@
 
     <!-- author -->
 
-    <TextView
+  <!--  <TextView
         android:id="@+id/book_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:textSize="@dimen/book_id"
-        android:textStyle="bold" />
+        android:textStyle="bold" />-->
 
     <!-- author -->
     <TextView
@@ -70,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClickBorrowBook"
-        android:text="Borrow" />
+        android:text="@string/button_borrow" />
 
 
 </LinearLayout>

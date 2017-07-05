@@ -25,6 +25,9 @@ import org.json.JSONObject;
 public class MyAccountActivity extends AppCompatActivity {
 
     private static final String TAG = "LibraryApp";
+    String str_fullName, str_email, str_department;
+    String str_CoreId, str_Password;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +39,21 @@ public class MyAccountActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent intent = getIntent();
+        str_fullName = intent.getStringExtra("name");
+        str_email = intent.getStringExtra("email");
+        str_department = intent.getStringExtra("department");
 
-        //START--- Work In Progress: Hardcode for now...
-        final String str_CoreId = "vbp687";
-        final String str_Password = "vbp687";
+
+        TextView myAccountFullNameTextView = (TextView)findViewById(R.id.myAccountFullName);
+        myAccountFullNameTextView.setText("Full Name : " + MainActivity.str_fullName);
+        TextView myAccountEmailTextView = (TextView)findViewById(R.id.myAccountEmail);
+        myAccountEmailTextView.setText("Email : " + MainActivity.str_email);
+        TextView myAccountDepartmentTextView = (TextView)findViewById(R.id.myAccountDepartment);
+        myAccountDepartmentTextView.setText("Department : " + MainActivity.str_dept);
+
+        /*//START--- Work In Progress: Hardcode for now...
+        str_CoreId = "vbp687";
+        str_Password = "vbp687";
         //END----- Work In Progress: Hardcode for now...
 
         Response.Listener<String> responseListener = new Response.Listener<String>(){
@@ -53,16 +67,8 @@ public class MyAccountActivity extends AppCompatActivity {
 
                     if(b_success){
                         Log.d(TAG, "onCreate MyAccount: success");
-                        String str_fullName = jsonResponse.getJSONObject("result").getString("fullName");
-                        String str_email = jsonResponse.getJSONObject("result").getString("email");
-                        String str_department = jsonResponse.getJSONObject("result").getString("department");
 
-                        TextView myAccountFullNameTextView = (TextView)findViewById(R.id.myAccountFullName);
-                        myAccountFullNameTextView.setText("Full Name : " + str_fullName);
-                        TextView myAccountEmailTextView = (TextView)findViewById(R.id.myAccountEmail);
-                        myAccountEmailTextView.setText("Email : " + str_email);
-                        TextView myAccountDepartmentTextView = (TextView)findViewById(R.id.myAccountDepartment);
-                        myAccountDepartmentTextView.setText("Department : " + str_department);
+
 
                     }else{
                         Log.d(TAG, "onCreate MyAccount: fail");
@@ -83,7 +89,7 @@ public class MyAccountActivity extends AppCompatActivity {
 
         MyAccountRequest myAccountRequest = new MyAccountRequest(str_CoreId, str_Password, responseListener);
         RequestQueue queue = Volley.newRequestQueue(MyAccountActivity.this);
-        queue.add(myAccountRequest);
+        queue.add(myAccountRequest);*/
     }
 
     @Override

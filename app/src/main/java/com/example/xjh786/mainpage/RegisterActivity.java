@@ -49,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
         Response.Listener<String> responseListener = new Response.Listener<String>(){
             @Override
             public void onResponse(String response){
-                pDialog.dismiss();
+                hidePDialog();
                 Log.d(TAG, "onRegisterSubmit: response received");
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
@@ -89,4 +89,10 @@ public class RegisterActivity extends AppCompatActivity {
         pDialog.setCancelable(false);
         pDialog.show();
     }
+
+    private void hidePDialog() {
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
+        }}
 }

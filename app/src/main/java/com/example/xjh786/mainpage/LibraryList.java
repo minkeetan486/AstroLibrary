@@ -1,5 +1,6 @@
 package com.example.xjh786.mainpage;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -36,10 +37,13 @@ public class LibraryList extends AppCompatActivity  {
     private CustomListAdapter adapter;
     private ProgressDialog pDialog;
     public final static String PAR_KEY = "package com.example.xjh786.mainpage.model.PAR";
+    private boolean borrowSuccess;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library_list);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -49,7 +53,7 @@ public class LibraryList extends AppCompatActivity  {
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Loading...");
         pDialog.show();
-        GetBooks("kvm768");// hardcoded as well, need to get from the login intent
+        GetBooks(MainActivity.str_coreId);// hardcoded as well, need to get from the login intent
 
         //need to make this better if possible
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -62,7 +66,7 @@ public class LibraryList extends AppCompatActivity  {
                 Bundle mBundle = new Bundle();
                 mBundle.putParcelable(PAR_KEY, book_at);
                 intent.putExtras(mBundle);
-                LibraryList.this.startActivity(intent);
+                LibraryList.this.startActivityForResult(intent,0);
 
                 //Toast.makeText(getBaseContext(),book_at.getTitle(),Toast.LENGTH_SHORT).show(); // will work on intent from here
             }
@@ -94,6 +98,8 @@ public class LibraryList extends AppCompatActivity  {
         Response.Listener<String> responseListener = new Response.Listener<String>(){
             @Override
             public void onResponse(String response){
+                Log.d(TAG, "onClickSearchBooks: receive response " + response);
+
                 hidePDialog();
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
@@ -113,7 +119,7 @@ public class LibraryList extends AppCompatActivity  {
                                 book.setTitle(obj.getString("Title"));
                                 book.setBook_id(obj.getString("BookInfo_ID"));
                                 book.setAuthor(obj.getString("Author"));
-                                book.setThumbnailUrl("https://img.clipartfest.com/25920a48a380e6c47e5c56da10ee44a9_no-image-available-clip-art-no-image-available-clipart_300-300.png");//hardcode for the time being
+                                book.setThumbnailUrl(obj.getString("Image_Src"));//hardcode for the time being
                                 book.setYear((int) obj.get("Year_of_Publish"));
                                 book.setqty((int) obj.get("Num_of_Available"));
                                 bookList.add(book);
@@ -160,4 +166,19 @@ public class LibraryList extends AppCompatActivity  {
             pDialog.dismiss();
             pDialog = null;
         }}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 0) {
+            if(resultCode == Activity.RESULT_OK){
+                 borrowSuccess =data.getBooleanExtra("borrowSuccess", false);
+
+                if(borrowSuccess){
+                    GetBooks(MainActivity.str_coreId);
+                }
+            }
+
+        }
+    }
 }

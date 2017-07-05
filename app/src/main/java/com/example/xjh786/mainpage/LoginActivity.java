@@ -42,28 +42,33 @@ public class LoginActivity extends AppCompatActivity {
         Response.Listener<String> responseListener = new Response.Listener<String>(){
             @Override
             public void onResponse(String response){
-                pDialog.dismiss();
+                hidePDialog();
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean b_success = jsonResponse.getBoolean("success");
 
-                    Log.d(TAG, "onClickLogin: receive response");
+                    Log.d(TAG, "onClickLogin: receive response" + jsonResponse.toString());
 
                     if(b_success){
                         Log.d(TAG, "onClickLogin: success");
                         String str_fullName = jsonResponse.getJSONObject("result").getString("fullName");
-                        boolean b_isAdmin = jsonResponse.getJSONObject("result").getBoolean("isAdmin");
+                        int b_isAdmin = jsonResponse.getJSONObject("result").getInt("isAdmin");
+                        String str_email = jsonResponse.getJSONObject("result").getString("email");
+                        String str_dept = jsonResponse.getJSONObject("result").getString("department");
 
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("fullName", str_fullName);
                         intent.putExtra("isAdmin", b_isAdmin);
+                        intent.putExtra("email", str_email);
+                        intent.putExtra("dept", str_dept);
+                        intent.putExtra("coreid", str_CoreId);
 
                         LoginActivity.this.startActivity(intent);
                         finish();
 
                     }else{
                         Log.d(TAG, "onClickLogin: fail");
-                        loadingActivity.fa.finish();
+
                         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                         builder.setMessage("Login Failed")
                                 .setNegativeButton("Retry", null)
@@ -75,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
         };
 
         Log.d(TAG, "onClickLogin: sending request");
@@ -87,6 +93,13 @@ public class LoginActivity extends AppCompatActivity {
         pDialog.setCancelable(false);
         pDialog.show();
     }
+
+    private void hidePDialog() {
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
+        }}
+
     public void onClickReg(View view){
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
 

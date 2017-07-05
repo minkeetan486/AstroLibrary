@@ -63,7 +63,7 @@ public class CustomListAdapter extends BaseAdapter {
         TextView author = (TextView) convertView.findViewById(R.id.author);
         TextView year_of_publish = (TextView) convertView.findViewById(R.id.year_of_publish);
         TextView qty = (TextView) convertView.findViewById(R.id.qty);
-        TextView book_id = (TextView) convertView.findViewById(R.id.book_id);
+       // TextView book_id = (TextView) convertView.findViewById(R.id.book_id);
 
         // getting movie data for the row
         Book m = books.get(position);
@@ -84,7 +84,7 @@ public class CustomListAdapter extends BaseAdapter {
         qty.setText("Available: " + String.valueOf(m.getqty()));
         //qty.setTextColor("#ff0000");
 
-        book_id.setText("ID:" + String.valueOf(m.getBook_id()));
+        //book_id.setText("ID:" + String.valueOf(m.getBook_id()));
 
         return convertView;
     }

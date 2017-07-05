@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MainPage</string>
+    <string name="app_name">Library App</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -12,24 +12,23 @@
     <string name="quote">A room without books is like a body without a soul.\n– Marcus Tullius Cicero</string>
     <string name="license">2017 Motorola Solutions - Astro SW.\nAll rights reserved.</string>
     <string name="button_credits">Credits</string>
+    <string name="button_borrow">Borrow</string>
+    <string name="button_register">Register</string>
+    <string name="button_login">Login</string>
+    <string name="button_submit">Login</string>
+    <string name="coreid">Core ID</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="department">Department Code</string>
+    <string name="announcement">ANNOUNCEMENT</string>
+    <string name="email">Email</string>
+
     <string-array name="credit_names">
         <item>MinKee Tan - WBF486</item>
         <item>LiPoh Chen - QGKR46</item>
         <item>JeYen Tam - CXNQ46</item>
         <item>CheeYien Yeap - VBP687</item>
         <item>JooLiang Cheah - MGB364</item>
-        <item>超女.Supergirl.S02E01.中英字幕.HDTVrip.1024X576.mp4</item>
-        <item>超女.Supergirl.S02E02.中英字幕.HDTVrip.1024X576.mp4</item>
-        <item>超女.Supergirl.S02E03.中英字幕.HDTVrip.1024X576.mp4</item>
-        <item>超女.Supergirl.S02E04.中英字幕.HDTVrip.1024X576.mp4</item>
-        <item>超女.Supergirl.S02E05.中英字幕.HDTVrip.1024X576.mp4</item>
-        <item>超女.Supergirl.S02E06.中英字幕.HDTVrip.1024X576.mp4</item>
-        <item>超女.Supergirl.S02E07.中英字幕.HDTVrip.1024X576.mp4</item>
-        <item>超女.Supergirl.S02E08.中英字幕.HDTVrip.1024X576.mp4</item>
-        <item>超女.Supergirl.S02E09.中英字幕.HDTVrip.1024X576.mp4</item>
-        <item>超女.Supergirl.S02E10.中英字幕.HDTVrip.1024X576.mp4</item>
-        <item>超女.Supergirl.S02E11.中英字幕.HDTVrip.1024X576.mp4</item>
-        <item>超女.Supergirl.S02E12.中英字幕.HDTVrip.1024X576.mp4</item>
-        <item>超女.Supergirl.S02E13.中英字幕.HDTVrip.1024X576.mp4</item>
+
     </string-array>
 </resources>

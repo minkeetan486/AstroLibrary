@@ -6,6 +6,5 @@
     android:layout_margin="10dp"
     android:gravity="start"
     android:textColor="#FFFFFF"
-    android:textSize="18sp"
-    >
+    android:textSize="18sp">
 </TextView>

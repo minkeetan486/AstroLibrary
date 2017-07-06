@@ -18,8 +18,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RegisterActivity"
-            android:label="Android Library"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="Register"/>
         <activity
             android:name=".loadingActivity"
             android:label="Android Library"

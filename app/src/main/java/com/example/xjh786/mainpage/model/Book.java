@@ -9,7 +9,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Book implements Parcelable{
-    private String title, thumbnailUrl,author,book_id;
+    private String title, thumbnailUrl,author,book_id, borrowDate, dueDate;
     private int qty,year_of_publish;
 
     public Book() {
@@ -68,6 +68,22 @@ public class Book implements Parcelable{
     public void setBook_id(String book_id) { this.book_id = book_id; }
 
     public String getBook_id() {return book_id;}
+
+    public String getBorrowDate() {
+        return borrowDate;
+    }
+
+    public void setBorrowDate(String borrowDate) {
+        this.borrowDate = borrowDate;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
 
 //start parcelable implementation
     public static final Creator<Book> CREATOR = new Creator<Book>() {

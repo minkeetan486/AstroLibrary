@@ -15,44 +15,38 @@
         <activity
             android:name=".MainActivity"
             android:label="Android Library"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".RegisterActivity"
             android:label="Android Library"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".loadingActivity"
             android:label="Android Library"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyAccountActivity"
-            android:label="My Account"></activity>
-
+            android:label="My Account" />
         <activity
             android:name=".LoginActivity"
             android:label="Android Library">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".AboutActivity"
             android:label="About"
-            android:theme="@style/AppTheme.AboutAndCredit"></activity>
+            android:theme="@style/AppTheme.AboutAndCredit" />
         <activity
             android:name=".Credits"
             android:label="Credits"
-            android:theme="@style/AppTheme.AboutAndCredit"></activity>
+            android:theme="@style/AppTheme.AboutAndCredit" />
         <activity
             android:name=".LibraryList"
-            android:label="Library List"/>
-
+            android:label="Library List" />
         <activity
             android:name=".BookDetails"
             android:label="Book Details" />

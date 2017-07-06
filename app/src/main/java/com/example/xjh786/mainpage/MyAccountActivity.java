@@ -1,6 +1,7 @@
 package com.example.xjh786.mainpage;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -13,20 +14,31 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.example.xjh786.mainpage.adapter.CustomListAdapter;
+import com.example.xjh786.mainpage.adapter.MyAccountListAdapter;
+import com.example.xjh786.mainpage.model.Book;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyAccountActivity extends AppCompatActivity {
 
     private static final String TAG = "LibraryApp";
-    String str_fullName, str_email, str_department;
     String str_CoreId, str_Password;
+    private List<Book> bookList = new ArrayList<Book>();
+    private ListView listView;
+    private MyAccountListAdapter adapter;
+    private ProgressDialog pDialog;
 
 
     @Override
@@ -38,12 +50,6 @@ public class MyAccountActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        Intent intent = getIntent();
-        str_fullName = intent.getStringExtra("name");
-        str_email = intent.getStringExtra("email");
-        str_department = intent.getStringExtra("department");
-
-
         TextView myAccountFullNameTextView = (TextView)findViewById(R.id.myAccountFullName);
         myAccountFullNameTextView.setText("Full Name : " + MainActivity.str_fullName);
         TextView myAccountEmailTextView = (TextView)findViewById(R.id.myAccountEmail);
@@ -51,23 +57,69 @@ public class MyAccountActivity extends AppCompatActivity {
         TextView myAccountDepartmentTextView = (TextView)findViewById(R.id.myAccountDepartment);
         myAccountDepartmentTextView.setText("Department : " + MainActivity.str_dept);
 
-        /*//START--- Work In Progress: Hardcode for now...
-        str_CoreId = "vbp687";
-        str_Password = "vbp687";
+        listView = (ListView) findViewById(R.id.history);
+        adapter = new MyAccountListAdapter(this, bookList);
+        listView.setAdapter(adapter);
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Loading...");
+        pDialog.show();
+
+        //START--- Work In Progress: Hardcode for now...
+      //  str_CoreId = "vbp687";
+      //  str_Password = "vbp687";
         //END----- Work In Progress: Hardcode for now...
 
         Response.Listener<String> responseListener = new Response.Listener<String>(){
             @Override
             public void onResponse(String response){
+                hidePDialog();
+
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean b_success = jsonResponse.getBoolean("success");
 
-                    Log.d(TAG, "onCreate MyAccount: receive response");
+                    Log.d(TAG, "onCreate MyAccount: receive response " + response.toString());
 
                     if(b_success){
                         Log.d(TAG, "onCreate MyAccount: success");
 
+                        if(!response.contains("\"pending\":  []")) {
+                            JSONArray books_array = jsonResponse.getJSONArray("pending");
+
+                            for (int i = 0; i < books_array.length(); i++) {
+                                try {
+                                    JSONObject obj = books_array.getJSONObject(i);
+                                    Book book = new Book();
+                                    book.setTitle(obj.getString("Title"));
+                                    book.setBook_id(obj.getString("BookInfo_ID"));
+                                    book.setAuthor(obj.getString("Author"));
+                                    book.setBorrowDate(obj.getString("Borrowed_Date"));
+                                    book.setDueDate(obj.getString("Due_Date"));
+                                    bookList.add(book);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+
+                        if(!response.contains("\"history\":  []")) {
+
+                            JSONArray history_array = jsonResponse.getJSONArray("history");
+                            for (int j = 0; j < history_array.length(); j++) {
+                                try {
+                                    JSONObject obj = history_array.getJSONObject(j);
+                                    Book book = new Book();
+                                    book.setTitle(obj.getString("Title"));
+                                    book.setBook_id(obj.getString("BookInfo_ID"));
+                                    book.setAuthor(obj.getString("Author"));
+                                    book.setBorrowDate(obj.getString("Borrowed_Date"));
+                                    bookList.add(book);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                        adapter.notifyDataSetChanged(); // update the listview
 
 
                     }else{
@@ -87,10 +139,16 @@ public class MyAccountActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate MyAccount: sending request");
 
-        MyAccountRequest myAccountRequest = new MyAccountRequest(str_CoreId, str_Password, responseListener);
+        MyAccountRequest myAccountRequest = new MyAccountRequest(MainActivity.str_coreId, responseListener);
         RequestQueue queue = Volley.newRequestQueue(MyAccountActivity.this);
-        queue.add(myAccountRequest);*/
+        queue.add(myAccountRequest);
     }
+
+    private void hidePDialog() {
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
+        }}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

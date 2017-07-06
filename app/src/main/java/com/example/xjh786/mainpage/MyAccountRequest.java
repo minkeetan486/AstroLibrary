@@ -14,16 +14,16 @@ import java.util.Map;
  */
 
 public class MyAccountRequest extends StringRequest {
-    private static final String LOGIN_REQUEST_URL = "https://androidlibrary.000webhostapp.com/LibraryApp/development/login.php";
+    private static final String LOGIN_REQUEST_URL = "https://androidlibrary.000webhostapp.com/LibraryApp/development/account.php";
     private Map<String, String> param;
     private static final String TAG = "LibraryApp";
 
-    public MyAccountRequest(String coreid, String password, Response.Listener<String> listener){
+    public MyAccountRequest(String coreid, Response.Listener<String> listener){
         super(Request.Method.POST, LOGIN_REQUEST_URL, listener, null);
         param = new HashMap<>();
         param.put("version", "1");
         param.put("coreid", coreid);
-        param.put("password", password);
+        param.put("action", "view");
         Log.d(TAG, "MyAccountRequest: created");
     }
 

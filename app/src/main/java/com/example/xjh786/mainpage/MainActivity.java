@@ -28,6 +28,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static com.example.xjh786.mainpage.R.id.nav_libCorner;
@@ -116,6 +118,7 @@ public class MainActivity extends AppCompatActivity
                                 ann.setContent(obj.getString("Announcement"));
                                 ann.setDate(obj.getString("Created_Date"));
                                 announcementList.add(ann);
+                                Collections.reverse(announcementList);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

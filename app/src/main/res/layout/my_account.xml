@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:id="@+id/myAccount"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1">
 
     <TextView
         android:id="@+id/myAccountText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0.06"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="My Account"
-        android:layout_weight="0.06"
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/myAccountFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:id="@+id/myAccountFullName" />
+        android:paddingTop="@dimen/nav_header_vertical_spacing" />
 
     <TextView
+        android:id="@+id/myAccountEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:id="@+id/myAccountEmail" />
+        android:paddingTop="@dimen/nav_header_vertical_spacing" />
 
     <TextView
+        android:id="@+id/myAccountDepartment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:id="@+id/myAccountDepartment" />
+        android:paddingTop="@dimen/nav_header_vertical_spacing" />
 
-    <Button
+    <ListView
         android:id="@+id/history"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Borrow History"
-        android:layout_marginTop="10dp"/>
+        android:padding="5dp" />
 </LinearLayout>

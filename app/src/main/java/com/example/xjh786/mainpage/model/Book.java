@@ -9,7 +9,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Book implements Parcelable{
-    private String title, thumbnailUrl,author,book_id, borrowDate, dueDate;
+    private String title, thumbnailUrl,author,book_id, borrowDate, dueDate, borrowStatus;
     private int qty,year_of_publish;
 
     public Book() {
@@ -83,6 +83,14 @@ public class Book implements Parcelable{
 
     public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public String getBorrowStatus() {
+        return borrowStatus;
+    }
+
+    public void setBorrowStatus(String borrowStatus) {
+        this.borrowStatus = borrowStatus;
     }
 
 //start parcelable implementation

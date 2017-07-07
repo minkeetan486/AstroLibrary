@@ -82,43 +82,42 @@ public class MyAccountActivity extends AppCompatActivity {
 
                     if(b_success){
                         Log.d(TAG, "onCreate MyAccount: success");
+                        JSONObject result = jsonResponse.getJSONObject("result");
 
-                        if(!response.contains("\"pending\":  []")) {
-                            JSONArray books_array = jsonResponse.getJSONArray("pending");
+                            JSONArray books_array = result.getJSONArray("pending");
 
                             for (int i = 0; i < books_array.length(); i++) {
                                 try {
                                     JSONObject obj = books_array.getJSONObject(i);
                                     Book book = new Book();
                                     book.setTitle(obj.getString("Title"));
-                                    book.setBook_id(obj.getString("BookInfo_ID"));
                                     book.setAuthor(obj.getString("Author"));
                                     book.setBorrowDate(obj.getString("Borrowed_Date"));
                                     book.setDueDate(obj.getString("Due_Date"));
+                                    book.setBorrowStatus("pending");
                                     bookList.add(book);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
                             }
-                        }
 
-                        if(!response.contains("\"history\":  []")) {
 
-                            JSONArray history_array = jsonResponse.getJSONArray("history");
+
+                            JSONArray history_array = result.getJSONArray("history");
                             for (int j = 0; j < history_array.length(); j++) {
                                 try {
                                     JSONObject obj = history_array.getJSONObject(j);
                                     Book book = new Book();
                                     book.setTitle(obj.getString("Title"));
-                                    book.setBook_id(obj.getString("BookInfo_ID"));
                                     book.setAuthor(obj.getString("Author"));
                                     book.setBorrowDate(obj.getString("Borrowed_Date"));
+                                    book.setBorrowStatus("history");
                                     bookList.add(book);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
                             }
-                        }
+
                         adapter.notifyDataSetChanged(); // update the listview
 
 

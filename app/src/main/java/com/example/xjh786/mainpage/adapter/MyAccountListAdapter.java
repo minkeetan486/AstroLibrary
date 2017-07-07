@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.xjh786.mainpage.R;
@@ -56,14 +57,19 @@ public class MyAccountListAdapter extends BaseAdapter {
         TextView author = (TextView) convertView.findViewById(R.id.author);
         TextView borrowDate = (TextView) convertView.findViewById(R.id.borrowDate);
         TextView dueDate = (TextView) convertView.findViewById(R.id.dueDate);
+        Button status = (Button) convertView.findViewById(R.id.status);
 
         // getting movie data for the row
         Book m = books.get(position);
 
-        title.setText(m.getTitle());
-        author.setText(m.getAuthor());
-        borrowDate.setText(m.getBorrowDate());
-        dueDate.setText(m.getDueDate());
+        title.setText("Title: " + m.getTitle());
+        author.setText("Author: " + m.getAuthor());
+        borrowDate.setText("Borrowed Date: " + m.getBorrowDate());
+        dueDate.setText("Due Date: " + m.getDueDate());
+
+        if(m.getBorrowStatus().equals("history")){
+            status.setVisibility(View.GONE);
+        }
 
 
         return convertView;

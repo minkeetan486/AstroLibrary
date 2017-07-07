@@ -89,6 +89,7 @@ public class BookDetails extends AppCompatActivity {
                                 .setNegativeButton("Ok", null)
                                 .create()
                                 .show();
+
                         qty.setText("Available: " + String.valueOf(mBook.getqty()-1));
                         borrowSuccess = true;
                     }

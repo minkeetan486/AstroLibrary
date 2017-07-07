@@ -41,13 +41,16 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean b_success = jsonResponse.getBoolean("success");
-
-                    Log.d(TAG, "onClickLogin: receive response");
+                    Log.d(TAG, "onClickdLogin: receive response");
 
                     if(b_success){
                         Log.d(TAG, "onClickLogin: success");
+                        boolean b_isAdmin = false;
                         String str_fullName = jsonResponse.getJSONObject("result").getString("fullName");
-                        boolean b_isAdmin = jsonResponse.getJSONObject("result").getBoolean("isAdmin");
+                        if(jsonResponse.getJSONObject("result").getInt("isAdmin")==1)
+                        {
+                            b_isAdmin = true;
+                        }
 
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("fullName", str_fullName);

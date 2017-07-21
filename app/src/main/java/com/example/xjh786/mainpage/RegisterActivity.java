@@ -67,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }else{
                         Log.d(TAG, "onRegisterSubmit: fail");
                         AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                        builder.setMessage("Login Failed")
+                        builder.setMessage("Registration Failed")
                                 .setNegativeButton("Retry", null)
                                 .create()
                                 .show();

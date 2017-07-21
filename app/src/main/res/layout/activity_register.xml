@@ -61,6 +61,6 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_submit"
+        android:text="@string/button_register"
         android:onClick="onClickSubmit"/>
 </LinearLayout>

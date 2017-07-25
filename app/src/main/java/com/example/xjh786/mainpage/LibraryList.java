@@ -172,9 +172,13 @@ public class LibraryList extends AppCompatActivity  {
 
         if (requestCode == 0) {
             if(resultCode == Activity.RESULT_OK){
+                Log.d(TAG, "intent return");
+
                  borrowSuccess =data.getBooleanExtra("borrowSuccess", false);
 
                 if(borrowSuccess){
+                    Log.d(TAG, "intent return borrow success");
+                    bookList.clear();
                     GetBooks(MainActivity.str_coreId);
                 }
             }

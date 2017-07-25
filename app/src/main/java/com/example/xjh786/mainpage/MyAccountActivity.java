@@ -272,6 +272,7 @@ public class MyAccountActivity extends AppCompatActivity{
                 dueDate.setText("Returned Date: " + m.getReturnDate());
 
             }else{
+                returnBook.setVisibility(View.VISIBLE);
                 dueDate.setText("Due Date: " + m.getDueDate());
 
             }

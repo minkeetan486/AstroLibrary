@@ -68,7 +68,7 @@ public class BookDetails extends AppCompatActivity {
     }
 
     public void onClickBorrowBook(View view){
-        BorrowBooks("kvm768", mBook.getBook_id());
+        BorrowBooks(MainActivity.str_coreId, mBook.getBook_id());
     }
 
     public void BorrowBooks(String etCoreId, String Book_ID)
